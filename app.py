@@ -3,6 +3,10 @@ from functools import wraps
 import os
 import sqlite3
 import secrets
+import json
+import urllib.error
+import urllib.request
+import urllib.parse
 
 from flask import Flask, g, jsonify, request, send_from_directory
 
@@ -60,6 +64,32 @@ def payload(required=()):
     if missing: return None, jsonify(error=f"Missing fields: {', '.join(missing)}"), 400
     return data, None, None
 def now(): return datetime.utcnow().isoformat(timespec="seconds") + "Z"
+
+@app.post("/api/chat")
+@require_auth
+def chat():
+    data, err, code = payload(("message",))
+    if err: return err, code
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key: return jsonify(error="Gemini is not configured. Set GEMINI_API_KEY on the server."), 503
+    model = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
+    prompt = ("You are ProcureAI ERP's operations assistant. Answer accurately and briefly using only the user's request and ERP context. "
+              "Help with suppliers, inventory, purchase orders, invoices, approvals, and reporting. Never invent records or claim an action was completed. "
+              "For legal, financial, safety, privacy, or compliance topics, give general information and recommend a qualified professional. "
+              "Refuse unlawful, fraudulent, harmful, or unauthorized requests.\n\n" +
+              f"ERP context: {json.dumps(data.get('context', {}), ensure_ascii=False)}\nUser: {data['message']}")
+    body = json.dumps({"contents": [{"parts": [{"text": prompt}]}], "generationConfig": {"temperature": 0.2, "maxOutputTokens": 800}}).encode()
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={urllib.parse.quote(api_key)}"
+    try:
+        req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"}, method="POST")
+        with urllib.request.urlopen(req, timeout=30) as response: result = json.load(response)
+        answer = result.get("candidates", [{}])[0].get("content", {}).get("parts", [{}])[0].get("text")
+        if not answer: return jsonify(error="Gemini returned no answer"), 502
+        return jsonify(answer=answer, model=model)
+    except urllib.error.HTTPError as exc:
+        return jsonify(error="Gemini request failed", details=exc.read().decode(errors="replace")[:500]), 502
+    except (urllib.error.URLError, TimeoutError):
+        return jsonify(error="Gemini is temporarily unavailable"), 504
 
 @app.get("/")
 def frontend(): return send_from_directory(FRONTEND_DIR, "index.html")
