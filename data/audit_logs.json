@@ -182,5 +182,165 @@
     "entity": "User",
     "entity_id": "USR002",
     "timestamp": "2026-08-21T13:38:18"
+  },
+  {
+    "id": "AUD024",
+    "user": "Vendor Portal",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR004",
+    "timestamp": "2026-08-21T13:52:31"
+  },
+  {
+    "id": "AUD025",
+    "user": "Vendor Portal",
+    "action": "AI analysis performed",
+    "entity": "Quote",
+    "entity_id": "QUO005",
+    "timestamp": "2026-08-21T13:53:21"
+  },
+  {
+    "id": "AUD026",
+    "user": "Admin User",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR001",
+    "timestamp": "2026-08-21T14:03:36"
+  },
+  {
+    "id": "AUD027",
+    "user": "Admin User",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR001",
+    "timestamp": "2026-08-21T14:15:43"
+  },
+  {
+    "id": "AUD028",
+    "user": "Priya Procurement",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR002",
+    "timestamp": "2026-08-21T14:16:55"
+  },
+  {
+    "id": "AUD029",
+    "user": "Priya Procurement",
+    "action": "Rfqs created",
+    "entity": "rfqs",
+    "entity_id": "RFQ002",
+    "timestamp": "2026-08-21T14:18:08"
+  },
+  {
+    "id": "AUD030",
+    "user": "Arjun Manager",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR003",
+    "timestamp": "2026-08-21T14:19:36"
+  },
+  {
+    "id": "AUD031",
+    "user": "Vendor Portal",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR004",
+    "timestamp": "2026-08-21T14:20:28"
+  },
+  {
+    "id": "AUD032",
+    "user": "Finance Team",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR006",
+    "timestamp": "2026-08-21T14:21:08"
+  },
+  {
+    "id": "AUD033",
+    "user": "Priya Procurement",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR002",
+    "timestamp": "2026-08-21T14:22:40"
+  },
+  {
+    "id": "AUD034",
+    "user": "Priya Procurement",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR002",
+    "timestamp": "2026-08-21T14:26:11"
+  },
+  {
+    "id": "AUD035",
+    "user": "Priya Procurement",
+    "action": "Rfqs created",
+    "entity": "rfqs",
+    "entity_id": "RFQ003",
+    "timestamp": "2026-08-21T14:26:11"
+  },
+  {
+    "id": "AUD036",
+    "user": "Arjun Manager",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR003",
+    "timestamp": "2026-08-21T14:26:11"
+  },
+  {
+    "id": "AUD037",
+    "user": "Arjun Manager",
+    "action": "RFQ approved",
+    "entity": "RFQ",
+    "entity_id": "RFQ003",
+    "timestamp": "2026-08-21T14:26:11"
+  },
+  {
+    "id": "AUD038",
+    "user": "Priya Procurement",
+    "action": "Rfqs deactivated",
+    "entity": "Record",
+    "entity_id": "RFQ003",
+    "timestamp": "2026-08-21T14:26:11"
+  },
+  {
+    "id": "AUD039",
+    "user": "Admin User",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR001",
+    "timestamp": "2026-08-21T14:29:41"
+  },
+  {
+    "id": "AUD040",
+    "user": "Priya Procurement",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR002",
+    "timestamp": "2026-08-21T14:30:58"
+  },
+  {
+    "id": "AUD041",
+    "user": "Arjun Manager",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR003",
+    "timestamp": "2026-08-21T14:32:42"
+  },
+  {
+    "id": "AUD042",
+    "user": "Arjun Manager",
+    "action": "RFQ approved",
+    "entity": "RFQ",
+    "entity_id": "RFQ002",
+    "timestamp": "2026-08-21T14:32:51"
+  },
+  {
+    "id": "AUD043",
+    "user": "Vendor Portal",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR004",
+    "timestamp": "2026-08-21T14:33:34"
   }
 ]

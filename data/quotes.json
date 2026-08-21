@@ -131,5 +131,55 @@
         "message": "Tax information is missing"
       }
     ]
+  },
+  {
+    "vendor": "Meridian Industrial Components",
+    "quote_number": "MIC-2026-081",
+    "product": "Steel Bolt M10",
+    "quantity": 5000.0,
+    "unit_price": 12.5,
+    "tax": 0.0,
+    "shipping": 0.0,
+    "delivery_days": 10.0,
+    "warranty_months": 24.0,
+    "validity_days": 30.0,
+    "items": [
+      {
+        "product": "Steel Bolt M10",
+        "quantity": 5000.0,
+        "unit_price": 12.5,
+        "total_price": 62500.0
+      }
+    ],
+    "discount": 0.0,
+    "id": "QUO005",
+    "status": "ANALYZED",
+    "file": "b2b2c0e24ae91571_demo_quotation.txt",
+    "created_at": "2026-08-21T13:53:21",
+    "confidence": {
+      "vendor": 98,
+      "quantity": 96,
+      "price": 99,
+      "delivery": 91,
+      "warranty": 88
+    },
+    "normalized": {
+      "currency": "INR",
+      "delivery_days": 10.0,
+      "warranty_months": 24.0,
+      "payment_terms": "Not specified"
+    },
+    "original_values": {
+      "raw_text": "VENDOR: Meridian Industrial Components\nQUOTE NUMBER: MIC-2026-081\nQUOTE DATE: 2026-08-21\nVALID UNTIL: 30 days\nPRODUCT: Steel Bolt M10\nSKU: BLT-M10\nQUANTITY: 5000\nUNIT PRICE: 11.40\nTAX: 10260\nSHIPPING: 1800\nDELIVERY DAYS: 12\nWARRANTY MONTHS: 24\nPAYMENT TERMS: 30 days from invoice\nMINIMUM ORDER QUANTITY: 1000\nADDITIONAL CHARGES: Installation included; packaging included\nNOTES: Prices are in INR and delivery is to Pune Plant.\n",
+      "delivery": 10.0,
+      "warranty": 24.0
+    },
+    "total_cost": 62500.0,
+    "risks": [
+      {
+        "level": "MEDIUM",
+        "message": "Tax information is missing"
+      }
+    ]
   }
 ]

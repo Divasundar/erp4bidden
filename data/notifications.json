@@ -30,5 +30,21 @@
     "recipient": "VEN002",
     "read": false,
     "created_at": "2026-08-21T13:20:23"
+  },
+  {
+    "id": "NOT005",
+    "type": "RFQ_APPROVED",
+    "message": "RFQ RFQ003 was approved by the manager",
+    "recipient": "PROCUREMENT OFFICER",
+    "read": false,
+    "created_at": "2026-08-21T14:26:11"
+  },
+  {
+    "id": "NOT006",
+    "type": "RFQ_APPROVED",
+    "message": "RFQ RFQ002 was approved by the manager",
+    "recipient": "PROCUREMENT OFFICER",
+    "read": false,
+    "created_at": "2026-08-21T14:32:51"
   }
 ]
