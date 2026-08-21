@@ -6,7 +6,7 @@
     "required_date": "2026-09-30",
     "delivery_location": "Pune Plant",
     "submission_deadline": "2026-08-30",
-    "status": "SENT",
+    "status": "APPROVED",
     "selected_vendors": [
       "VEN001",
       "VEN002",
@@ -20,7 +20,13 @@
         "specifications": "Grade 8.8"
       }
     ],
-    "created_at": "2026-08-21T12:45:07"
+    "created_at": "2026-08-21T12:45:07",
+    "last_action": {
+      "action": "approve",
+      "by": "Arjun Manager",
+      "at": "2026-08-21T14:43:45",
+      "comment": "Reviewed"
+    }
   },
   {
     "title": "amazon",

@@ -333,6 +333,33 @@ def send_po(po_id):
 def vendor_quotes():
     vendor_id=current_user()["id"].replace("USR004","VEN001");return jsonify([x for x in read("quotes") if x.get("vendor_id")==vendor_id])
 
+WORKFLOW_ROLES={
+    "submit_requirement":["ADMIN","PROCUREMENT OFFICER"],"submit_rfq":["ADMIN","PROCUREMENT OFFICER"],"send_rfq":["ADMIN","PROCUREMENT OFFICER"],"delete_draft":["ADMIN","PROCUREMENT OFFICER"],
+    "accept_rfq":["VENDOR"],"decline_rfq":["VENDOR"],"submit_quote":["VENDOR"],"edit_quote":["VENDOR"],"withdraw_quote":["VENDOR"],"request_revision":["ADMIN","PROCUREMENT OFFICER"],
+    "run_analysis":["ADMIN","PROCUREMENT OFFICER"],"shortlist":["ADMIN","PROCUREMENT OFFICER"],"send_for_approval":["ADMIN","PROCUREMENT OFFICER"],
+    "approve":["ADMIN","MANAGER"],"reject":["ADMIN","MANAGER"],"send_back":["ADMIN","MANAGER"],
+    "generate_po":["ADMIN","PROCUREMENT OFFICER"],"send_po":["ADMIN","PROCUREMENT OFFICER"],"cancel_po":["ADMIN","PROCUREMENT OFFICER"],"accept_po":["VENDOR"],"reject_po":["VENDOR"],
+    "verify_receipt":["ADMIN","WAREHOUSE"],"reject_receipt":["ADMIN","WAREHOUSE"],"upload_invoice":["VENDOR"],"verify_invoice":["ADMIN","FINANCE"],"flag_mismatch":["ADMIN","FINANCE"],
+    "approve_match":["ADMIN","FINANCE"],"reject_match":["ADMIN","FINANCE"],"approve_payment":["ADMIN","FINANCE"],"hold_payment":["ADMIN","FINANCE"],"mark_paid":["ADMIN","FINANCE"]}
+
+@app.post("/api/workflow")
+@auth()
+def workflow_action():
+    body=request.json or {}; entity=body.get("entity"); item_id=body.get("id"); action=body.get("action"); user=current_user()
+    if action not in WORKFLOW_ROLES or user["role"] not in WORKFLOW_ROLES[action]: return jsonify({"error":"This role cannot perform that action"}),403
+    names={"rfq":"rfqs","quote":"quotes","po":"purchase_orders","invoice":"invoices","payment":"payments","approval":"approvals","goods_receipt":"goods_receipts"}; name=names.get(entity,entity)
+    records=read(name); item=next((x for x in records if x.get("id")==item_id),None)
+    if not item:return jsonify({"error":"Record not found"}),404
+    if action=="delete_draft":
+        if item.get("status") not in ("DRAFT","REJECTED"):return jsonify({"error":"Only drafts can be deleted"}),400
+        records=[x for x in records if x.get("id")!=item_id];write(name,records);audit("Draft deleted",entity,item_id);return jsonify({"ok":True})
+    transitions={"submit_requirement":"SUBMITTED","submit_rfq":"SUBMITTED","send_rfq":"SENT","accept_rfq":"ACCEPTED","decline_rfq":"DECLINED","submit_quote":"SUBMITTED","edit_quote":"DRAFT","withdraw_quote":"WITHDRAWN","request_revision":"REVISION_REQUESTED","run_analysis":"ANALYZED","shortlist":"SHORTLISTED","send_for_approval":"PENDING_APPROVAL","approve":"APPROVED","reject":"REJECTED","send_back":"REVISION_REQUESTED","generate_po":"DRAFT","send_po":"SENT_TO_VENDOR","cancel_po":"CANCELLED","accept_po":"ACCEPTED","reject_po":"REJECTED","verify_receipt":"ACCEPTED","reject_receipt":"MISMATCH","upload_invoice":"RECEIVED","verify_invoice":"VERIFIED","flag_mismatch":"MISMATCH","approve_match":"MATCHED","reject_match":"ESCALATED","approve_payment":"APPROVED","hold_payment":"ON_HOLD","mark_paid":"PAID"}
+    if action in transitions:item["status"]=transitions[action]
+    item["last_action"]={"action":action,"by":user["name"],"at":now(),"comment":body.get("comment","")}
+    write(name,records);audit(action.replace("_"," ").title(),entity,item_id)
+    notifications=read("notifications");notifications.append({"id":f"NOT{len(notifications)+1:03d}","type":action.upper(),"message":f"{entity} {item_id}: {action.replace('_',' ')}","recipient":body.get("recipient","SYSTEM"),"read":False,"created_at":now()});write("notifications",notifications)
+    return jsonify(item)
+
 @app.post("/api/recommendation/explain")
 @auth()
 def explain_recommendation():

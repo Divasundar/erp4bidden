@@ -342,5 +342,37 @@
     "entity": "User",
     "entity_id": "USR004",
     "timestamp": "2026-08-21T14:33:34"
+  },
+  {
+    "id": "AUD044",
+    "user": "Priya Procurement",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR002",
+    "timestamp": "2026-08-21T14:43:45"
+  },
+  {
+    "id": "AUD045",
+    "user": "Priya Procurement",
+    "action": "Send For Approval",
+    "entity": "rfq",
+    "entity_id": "RFQ001",
+    "timestamp": "2026-08-21T14:43:45"
+  },
+  {
+    "id": "AUD046",
+    "user": "Arjun Manager",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR003",
+    "timestamp": "2026-08-21T14:43:45"
+  },
+  {
+    "id": "AUD047",
+    "user": "Arjun Manager",
+    "action": "Approve",
+    "entity": "rfq",
+    "entity_id": "RFQ001",
+    "timestamp": "2026-08-21T14:43:45"
   }
 ]
