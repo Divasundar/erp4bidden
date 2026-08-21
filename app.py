@@ -193,6 +193,7 @@ def update(name, item_id):
 def deactivate(name, item_id):
     records=read(name); found=next((x for x in records if x.get("id")==item_id),None)
     if not found: return jsonify({"error":"Not found"}),404
+    if name=="rfqs" and found.get("status")!="DRAFT": return jsonify({"error":"Only draft RFQs can be deleted"}),400
     if name in {"vendors","products"}: found["status"]="INACTIVE"; write(name,records)
     else: records=[x for x in records if x.get("id")!=item_id]; write(name,records)
     audit(f"{name.title()} deactivated","Record",item_id); return jsonify({"ok":True})
@@ -205,6 +206,15 @@ def send_rfq(rfq_id):
     rfq["status"]="SENT"; update_records("rfqs", rfq); notifications=read("notifications")
     for vendor_id in rfq.get("selected_vendors",[]): notifications.append({"id":f"NOT{len(notifications)+1:03d}","type":"RFQ_SENT","message":f"New RFQ {rfq_id} is available","recipient":vendor_id,"read":False,"created_at":now()})
     write("notifications",notifications); audit("RFQ sent", "RFQ", rfq_id); return jsonify(rfq)
+
+@app.post("/api/rfqs/<rfq_id>/approve")
+@auth(["ADMIN","MANAGER"])
+def approve_rfq(rfq_id):
+    rfq=next((x for x in read("rfqs") if x.get("id")==rfq_id),None)
+    if not rfq:return jsonify({"error":"RFQ not found"}),404
+    if rfq.get("status")!="DRAFT":return jsonify({"error":"Only draft RFQs can be approved"}),400
+    rfq.update({"status":"APPROVED","approved_by":current_user()["name"],"approved_at":now()});update_records("rfqs",rfq);audit("RFQ approved","RFQ",rfq_id)
+    notifications=read("notifications");notifications.append({"id":f"NOT{len(notifications)+1:03d}","type":"RFQ_APPROVED","message":f"RFQ {rfq_id} was approved by the manager","recipient":"PROCUREMENT OFFICER","read":False,"created_at":now()});write("notifications",notifications);return jsonify(rfq)
 
 def update_records(name, item): write(name, [item if x.get("id") == item.get("id") else x for x in read(name)])
 
