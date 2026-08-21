@@ -69,22 +69,22 @@ def now(): return datetime.utcnow().isoformat(timespec="seconds") + "Z"
 def file_users():
     if not os.path.exists(USERS_FILE):
         with open(USERS_FILE, "w", encoding="utf-8") as f:
-            f.write("Admin|admin@procureai.local|admin123|admin\nDemo User|user@procureai.local|user123|user\n")
+            f.write("admin|admin123|admin\noperator|user123|user\n")
     users = []
     with open(USERS_FILE, encoding="utf-8") as f:
         for line in f:
             parts = line.rstrip("\n").split("|")
-            if len(parts) == 4: users.append(dict(id=len(users)+1, name=parts[0], email=parts[1], password=parts[2], role=parts[3]))
+            if len(parts) == 3: users.append(dict(id=len(users)+1, username=parts[0], password=parts[1], role=parts[2]))
     return users
 
 @app.post("/api/auth/register")
 def register():
-    data, err, code = payload(("name", "email", "password"))
+    data, err, code = payload(("username", "password"))
     if err: return err, code
-    users = file_users(); email = data["email"].strip().lower()
-    if any(u["email"].lower() == email for u in users): return jsonify(error="Email is already registered"), 409
-    with open(USERS_FILE, "a", encoding="utf-8") as f: f.write(f"{data['name'].strip()}|{email}|{data['password']}|user\n")
-    return jsonify(message="Registration successful", user={"name": data["name"].strip(), "email": email, "role": "user"}), 201
+    users = file_users(); username = data["username"].strip().lower()
+    if any(u["username"].lower() == username for u in users): return jsonify(error="Username is already registered"), 409
+    with open(USERS_FILE, "a", encoding="utf-8") as f: f.write(f"{username}|{data['password']}|user\n")
+    return jsonify(message="Registration successful", user={"username": username, "role": "user"}), 201
 
 @app.post("/api/chat")
 @require_auth
@@ -126,12 +126,12 @@ def health(): return jsonify(status="ok", service="procureai-backend", time=now(
 
 @app.post("/api/auth/login")
 def login():
-    data, err, code = payload(("email", "password"))
+    data, err, code = payload(("username", "password"))
     if err: return err, code
-    user = next((u for u in file_users() if u["email"].lower() == data["email"].strip().lower() and u["password"] == data["password"]), None)
+    user = next((u for u in file_users() if u["username"].lower() == data["username"].strip().lower() and u["password"] == data["password"]), None)
     if not user: return jsonify(error="Invalid email or password"), 401
     token = secrets.token_urlsafe(32); TOKENS[token] = user
-    return jsonify(token=token, user={k: user[k] for k in ("id", "name", "email", "role")})
+    return jsonify(token=token, user={k: user[k] for k in ("id", "username", "role")})
 
 def crud(table, fields, required=()):
     @require_auth

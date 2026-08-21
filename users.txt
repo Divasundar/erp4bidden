@@ -1,2 +1,2 @@
-Admin|admin@procureai.local|admin123|admin
-Demo User|user@procureai.local|user123|user
+admin|admin123|admin
+operator|user123|user
