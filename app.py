@@ -94,7 +94,7 @@ def chat():
     api_key = os.getenv("GEMINI_API_KEY")
     if not api_key: return jsonify(error="Gemini is not configured. Set GEMINI_API_KEY on the server."), 503
     model = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
-    prompt = ("You are ProcureAI ERP's operations assistant. Answer accurately and briefly using only the user's request and ERP context. "
+    prompt = ("You are 4Bidden ERP's operations assistant. Answer accurately and briefly using only the user's request and ERP context. "
               "Help with suppliers, inventory, purchase orders, invoices, approvals, and reporting. Never invent records or claim an action was completed. "
               "For legal, financial, safety, privacy, or compliance topics, give general information and recommend a qualified professional. "
               "Refuse unlawful, fraudulent, harmful, or unauthorized requests.\n\n" +
