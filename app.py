@@ -18,6 +18,7 @@ def cors_headers(response):
     response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, PATCH, DELETE, OPTIONS"
     return response
 DB_PATH = os.getenv("DATABASE_PATH", os.path.join(os.path.dirname(__file__), "procureai.db"))
+USERS_FILE = os.getenv("USERS_FILE", os.path.join(os.path.dirname(__file__), "users.txt"))
 TOKENS = {}
 FRONTEND_DIR = os.path.join(os.path.dirname(__file__), "public")
 
@@ -65,6 +66,26 @@ def payload(required=()):
     return data, None, None
 def now(): return datetime.utcnow().isoformat(timespec="seconds") + "Z"
 
+def file_users():
+    if not os.path.exists(USERS_FILE):
+        with open(USERS_FILE, "w", encoding="utf-8") as f:
+            f.write("Admin|admin@procureai.local|admin123|admin\nDemo User|user@procureai.local|user123|user\n")
+    users = []
+    with open(USERS_FILE, encoding="utf-8") as f:
+        for line in f:
+            parts = line.rstrip("\n").split("|")
+            if len(parts) == 4: users.append(dict(id=len(users)+1, name=parts[0], email=parts[1], password=parts[2], role=parts[3]))
+    return users
+
+@app.post("/api/auth/register")
+def register():
+    data, err, code = payload(("name", "email", "password"))
+    if err: return err, code
+    users = file_users(); email = data["email"].strip().lower()
+    if any(u["email"].lower() == email for u in users): return jsonify(error="Email is already registered"), 409
+    with open(USERS_FILE, "a", encoding="utf-8") as f: f.write(f"{data['name'].strip()}|{email}|{data['password']}|user\n")
+    return jsonify(message="Registration successful", user={"name": data["name"].strip(), "email": email, "role": "user"}), 201
+
 @app.post("/api/chat")
 @require_auth
 def chat():
@@ -107,9 +128,9 @@ def health(): return jsonify(status="ok", service="procureai-backend", time=now(
 def login():
     data, err, code = payload(("email", "password"))
     if err: return err, code
-    user = db().execute("SELECT * FROM users WHERE email=? AND password=?", (data["email"], data["password"])).fetchone()
+    user = next((u for u in file_users() if u["email"].lower() == data["email"].strip().lower() and u["password"] == data["password"]), None)
     if not user: return jsonify(error="Invalid email or password"), 401
-    token = secrets.token_urlsafe(32); TOKENS[token] = row(user)
+    token = secrets.token_urlsafe(32); TOKENS[token] = user
     return jsonify(token=token, user={k: user[k] for k in ("id", "name", "email", "role")})
 
 def crud(table, fields, required=()):

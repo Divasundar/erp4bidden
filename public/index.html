@@ -21,5 +21,18 @@
   </head>
   <body>
     <div id="root"></div>
+  <div id="auth-popup" style="position:fixed;inset:0;background:#0f172acc;display:flex;align-items:center;justify-content:center;z-index:9999;font-family:Inter,Arial">
+    <form id="auth-form" style="background:#fff;padding:28px;border-radius:16px;width:min(92vw,380px);box-shadow:0 20px 60px #0005">
+      <h2 style="margin:0 0 6px;color:#172554">Welcome to ProcureAI</h2><p id="auth-mode" style="color:#64748b;margin-top:0">Sign in to continue</p>
+      <input id="auth-name" placeholder="Full name" style="display:none;width:100%;box-sizing:border-box;padding:12px;margin:6px 0;border:1px solid #cbd5e1;border-radius:8px">
+      <input id="auth-email" type="email" placeholder="Email" required style="width:100%;box-sizing:border-box;padding:12px;margin:6px 0;border:1px solid #cbd5e1;border-radius:8px">
+      <input id="auth-password" type="password" placeholder="Password" required style="width:100%;box-sizing:border-box;padding:12px;margin:6px 0;border:1px solid #cbd5e1;border-radius:8px">
+      <button style="width:100%;padding:12px;margin-top:10px;border:0;border-radius:8px;background:#2563eb;color:#fff;font-weight:600;cursor:pointer">Continue</button>
+      <p id="auth-error" style="color:#dc2626;min-height:20px"></p><a href="#" id="auth-toggle">Create a new account</a>
+    </form>
+  </div>
+  <script>
+  (()=>{const p=document.getElementById('auth-popup'),f=document.getElementById('auth-form'),n=document.getElementById('auth-name'),e=document.getElementById('auth-email'),pw=document.getElementById('auth-password'),err=document.getElementById('auth-error'),t=document.getElementById('auth-toggle'),m=document.getElementById('auth-mode');let reg=false;t.onclick=x=>{x.preventDefault();reg=!reg;n.style.display=reg?'block':'none';m.textContent=reg?'Create your account':'Sign in to continue';t.textContent=reg?'Already have an account?':'Create a new account'};f.onsubmit=async x=>{x.preventDefault();err.textContent='';try{const r=await fetch('/api/auth/'+(reg?'register':'login'),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n.value,email:e.value,password:pw.value})}),d=await r.json();if(!r.ok)throw Error(d.error||'Request failed');if(reg){reg=false;t.click();err.style.color='#16a34a';err.textContent='Registered. You can now sign in.'}else{localStorage.setItem('procureai_token',d.token);p.remove()}}catch(z){err.style.color='#dc2626';err.textContent=z.message}}})();
+  </script>
   <script src="https://replit-cdn.com/replit-pill/replit-pill.global.js" data-referral-code="pcfir8rixpkq" data-repl-id="62910ac9-5391-4462-9e7c-b9d5ab81daaf"></script></body>
 </html>
