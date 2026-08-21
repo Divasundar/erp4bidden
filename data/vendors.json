@@ -1,0 +1,41 @@
+[
+  {
+    "id": "VEN001",
+    "company_name": "Apex Industrial Supplies",
+    "contact_person": "Meera Shah",
+    "email": "sales@apex.example",
+    "phone": "+91 98765 43210",
+    "category": "Industrial",
+    "payment_terms": "30 days",
+    "quality_score": 92,
+    "delivery_score": 88,
+    "rating": 4.6,
+    "status": "ACTIVE"
+  },
+  {
+    "id": "VEN002",
+    "company_name": "Global Components Ltd",
+    "contact_person": "Ravi Kumar",
+    "email": "quotes@global.example",
+    "phone": "+91 91234 56789",
+    "category": "Components",
+    "payment_terms": "45 days",
+    "quality_score": 95,
+    "delivery_score": 96,
+    "rating": 4.8,
+    "status": "ACTIVE"
+  },
+  {
+    "id": "VEN003",
+    "company_name": "Northstar Trading Co",
+    "contact_person": "Anita Rao",
+    "email": "hello@northstar.example",
+    "phone": "+91 99887 77665",
+    "category": "Hardware",
+    "payment_terms": "15 days",
+    "quality_score": 84,
+    "delivery_score": 78,
+    "rating": 4.1,
+    "status": "ACTIVE"
+  }
+]

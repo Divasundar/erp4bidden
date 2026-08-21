@@ -1,0 +1,25 @@
+[
+  {
+    "id": "RFQ001",
+    "title": "Q3 Plant Hardware",
+    "description": "Supply of critical maintenance hardware",
+    "required_date": "2026-09-30",
+    "delivery_location": "Pune Plant",
+    "submission_deadline": "2026-08-30",
+    "status": "SENT",
+    "selected_vendors": [
+      "VEN001",
+      "VEN002",
+      "VEN003"
+    ],
+    "items": [
+      {
+        "product": "Steel Bolt M10",
+        "sku": "BLT-M10",
+        "quantity": 5000,
+        "specifications": "Grade 8.8"
+      }
+    ],
+    "created_at": "2026-08-21T12:45:07"
+  }
+]

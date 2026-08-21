@@ -1,0 +1,32 @@
+[
+  {
+    "id": "INV001",
+    "product_id": "PRD001",
+    "product": "Steel Bolt M10",
+    "sku": "BLT-M10",
+    "current_stock": 2400,
+    "reserved_stock": 0,
+    "reorder_level": 3000,
+    "warehouse": "Pune Plant"
+  },
+  {
+    "id": "INV002",
+    "product_id": "PRD002",
+    "product": "Safety Gloves",
+    "sku": "GLV-001",
+    "current_stock": 850,
+    "reserved_stock": 0,
+    "reorder_level": 500,
+    "warehouse": "Pune Plant"
+  },
+  {
+    "id": "INV003",
+    "product_id": "PRD003",
+    "product": "Hydraulic Hose",
+    "sku": "HOS-12",
+    "current_stock": 120,
+    "reserved_stock": 0,
+    "reorder_level": 200,
+    "warehouse": "Pune Plant"
+  }
+]

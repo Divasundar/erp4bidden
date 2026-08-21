@@ -1,0 +1,45 @@
+[
+  {
+    "id": "PRD001",
+    "name": "Steel Bolt M10",
+    "sku": "BLT-M10",
+    "category": "Hardware",
+    "unit": "pcs",
+    "description": "Grade 8.8 galvanized steel bolt",
+    "current_stock": 2400,
+    "reorder_level": 3000,
+    "average_price": 12.5,
+    "preferred_vendors": [
+      "VEN001",
+      "VEN002"
+    ]
+  },
+  {
+    "id": "PRD002",
+    "name": "Safety Gloves",
+    "sku": "GLV-001",
+    "category": "Safety",
+    "unit": "pairs",
+    "description": "Cut-resistant industrial gloves",
+    "current_stock": 850,
+    "reorder_level": 500,
+    "average_price": 180,
+    "preferred_vendors": [
+      "VEN003"
+    ]
+  },
+  {
+    "id": "PRD003",
+    "name": "Hydraulic Hose",
+    "sku": "HOS-12",
+    "category": "Maintenance",
+    "unit": "m",
+    "description": "High-pressure hydraulic hose",
+    "current_stock": 120,
+    "reorder_level": 200,
+    "average_price": 950,
+    "preferred_vendors": [
+      "VEN002"
+    ]
+  }
+]

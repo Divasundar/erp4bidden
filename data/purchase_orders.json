@@ -1,0 +1,18 @@
+[
+  {
+    "id": "PO001",
+    "rfq_id": "RFQ001",
+    "vendor_id": "VEN002",
+    "vendor": "Global Components Ltd",
+    "status": "SENT_TO_VENDOR",
+    "total": 71820,
+    "items": [
+      {
+        "product": "Steel Bolt M10",
+        "quantity": 5000,
+        "unit_price": 11.8
+      }
+    ],
+    "created_at": "2026-08-21T12:45:07"
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "weights": {
+    "delivery": 25,
+    "performance": 10,
+    "price": 40,
+    "quality": 15,
+    "warranty": 10
+  }
+}

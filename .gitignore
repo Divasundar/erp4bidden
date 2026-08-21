@@ -1,5 +1,5 @@
-__pycache__/
-*.py[cod]
-procureai.db
 .env
-users.local.txt
+.venv/
+__pycache__/
+uploads/*
+!uploads/.gitkeep

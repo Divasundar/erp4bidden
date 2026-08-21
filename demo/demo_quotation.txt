@@ -1,0 +1,16 @@
+VENDOR: Meridian Industrial Components
+QUOTE NUMBER: MIC-2026-081
+QUOTE DATE: 2026-08-21
+VALID UNTIL: 30 days
+PRODUCT: Steel Bolt M10
+SKU: BLT-M10
+QUANTITY: 5000
+UNIT PRICE: 11.40
+TAX: 10260
+SHIPPING: 1800
+DELIVERY DAYS: 12
+WARRANTY MONTHS: 24
+PAYMENT TERMS: 30 days from invoice
+MINIMUM ORDER QUANTITY: 1000
+ADDITIONAL CHARGES: Installation included; packaging included
+NOTES: Prices are in INR and delivery is to Pune Plant.

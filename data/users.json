@@ -1,0 +1,44 @@
+[
+  {
+    "id": "USR001",
+    "name": "Admin User",
+    "email": "admin@procureflow.local",
+    "role": "ADMIN",
+    "password_hash": "scrypt:32768:8:1$dTTpJ103OwisO25j$2be94a24c2fef746e1109f9621caa2b0dcefa76a9726b266f697af22c346141a744f712f5304e189bd111e756ac0cbec580bc0232401854c1e7d4479402f6e6f"
+  },
+  {
+    "id": "USR002",
+    "name": "Priya Procurement",
+    "email": "procurement@procureflow.local",
+    "role": "PROCUREMENT OFFICER",
+    "password_hash": "scrypt:32768:8:1$vjQ53rPd8k2umXPs$69969ecc9c940cd96032624cdc3397c15345c1c6556fd5740f7f3039ae3b12b485968d94e7712d2a75564e6410a2af537c16754a0387888b32c832784268a7a3"
+  },
+  {
+    "id": "USR003",
+    "name": "Arjun Manager",
+    "email": "manager@procureflow.local",
+    "role": "MANAGER",
+    "password_hash": "scrypt:32768:8:1$RdBYgqi4lJzs4AbC$1175b73eda5ef40ec43f1a94ad82abfde9877181fb8f579e26e30819ee0de40d8e0d5c13c5c7b5fbbaadbe83a94054710b143c566b721895fa4c9a008bdc2df2"
+  },
+  {
+    "id": "USR004",
+    "name": "Vendor Portal",
+    "email": "vendor@procureflow.local",
+    "role": "VENDOR",
+    "password_hash": "scrypt:32768:8:1$wLKRMzfMPxfniMIG$0b170cb908f5fdef2c89878480d70d1e07e4f08c064cd2d0f287468de7394e93df29008066902718cc7311b9c136626f17e2fc1db95327d80ce4f29c0607d830"
+  },
+  {
+    "id": "USR005",
+    "name": "Warehouse Team",
+    "email": "warehouse@procureflow.local",
+    "role": "WAREHOUSE",
+    "password_hash": "scrypt:32768:8:1$vguAPho1rrdUZ8ON$57b2a2f273de7095b0fa43d50ba74b587fe4997f06c5be05c68292e91c195b2dec6af887bc6cf299e881a15c3385cf2f7afe137a39c47cbf392eddffdec6da79"
+  },
+  {
+    "id": "USR006",
+    "name": "Finance Team",
+    "email": "finance@procureflow.local",
+    "role": "FINANCE",
+    "password_hash": "scrypt:32768:8:1$PSLPuF72F0em2Og4$6da6c7186c429500d4b908487d4fa13df7dc2f55d06e84a6b5417c2acb048375c15f63a47ef37645ee0c121836a848611a792c7caab641debc7bcf8a44c2ba30"
+  }
+]

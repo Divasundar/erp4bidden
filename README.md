@@ -1,15 +1,27 @@
-# 4Bidden ERP backend
+# ProcureFlow ERP
 
-Flask + SQLite REST API for the 4Bidden ERP frontend.
+A runnable AI-powered procurement ERP MVP using Flask, JSON files, and a vanilla JavaScript frontend. It covers vendor/product management, RFQs, quotation upload and analysis, deterministic vendor comparison, approvals, inventory receipt, finance records, audit logging, analytics, role-based access, and responsive enterprise UI.
+
+## Run locally
 
 ```powershell
-py -m pip install -r requirements.txt
-py app.py
+py -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+python app.py
 ```
 
-Open `http://localhost:5000` for the mirrored 4Bidden ERP web app. The API is available at `http://localhost:5000/api`. Health check: `GET /api/health`.
-Login with `admin` / `admin123` or `operator` / `user123`. Users are stored in `users.txt`; registration is available at `POST /api/auth/register` with `username` and `password`. Send the returned token as `Authorization: Bearer <token>`.
+Open `http://127.0.0.1:5000`.
 
-To enable the ERP chatbot, set `GEMINI_API_KEY` in the server environment (never commit the key). The authenticated `POST /api/chat` endpoint accepts `{ "message": "...", "context": {} }` and returns `{ "answer": "..." }`.
+Demo credentials:
 
-Routes: `/api/dashboard`, `/api/suppliers`, `/api/products`, `/api/purchase-orders`, `/api/invoices`.
+| Role | Email | Password |
+|---|---|---|
+| Admin | admin@procureflow.local | Admin@123 |
+| Procurement Officer | procurement@procureflow.local | Procure@123 |
+| Manager | manager@procureflow.local | Manager@123 |
+| Vendor | vendor@procureflow.local | Vendor@123 |
+| Warehouse | warehouse@procureflow.local | Warehouse@123 |
+| Finance | finance@procureflow.local | Finance@123 |
+
+Set `OPENAI_API_KEY` and `OPENAI_MODEL` in `.env` when connecting an LLM provider. The deterministic scoring engine remains authoritative for recommendations.

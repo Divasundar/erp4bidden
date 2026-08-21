@@ -1,0 +1,186 @@
+[
+  {
+    "id": "AUD001",
+    "user": "Admin User",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR001",
+    "timestamp": "2026-08-21T12:45:07"
+  },
+  {
+    "id": "AUD002",
+    "user": "Admin User",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR001",
+    "timestamp": "2026-08-21T12:45:21"
+  },
+  {
+    "id": "AUD003",
+    "user": "Admin User",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR001",
+    "timestamp": "2026-08-21T12:50:51"
+  },
+  {
+    "id": "AUD004",
+    "user": "Admin User",
+    "action": "Settings updated",
+    "entity": "Settings",
+    "entity_id": "SET001",
+    "timestamp": "2026-08-21T12:50:51"
+  },
+  {
+    "id": "AUD005",
+    "user": "Finance Team",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR006",
+    "timestamp": "2026-08-21T12:52:16"
+  },
+  {
+    "id": "AUD006",
+    "user": "Admin User",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR001",
+    "timestamp": "2026-08-21T12:52:17"
+  },
+  {
+    "id": "AUD007",
+    "user": "Admin User",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR001",
+    "timestamp": "2026-08-21T12:59:05"
+  },
+  {
+    "id": "AUD008",
+    "user": "Admin User",
+    "action": "RFQ sent",
+    "entity": "RFQ",
+    "entity_id": "RFQ001",
+    "timestamp": "2026-08-21T12:59:05"
+  },
+  {
+    "id": "AUD009",
+    "user": "Admin User",
+    "action": "Vendors deactivated",
+    "entity": "Record",
+    "entity_id": "VEN003",
+    "timestamp": "2026-08-21T12:59:05"
+  },
+  {
+    "id": "AUD010",
+    "user": "Admin User",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR001",
+    "timestamp": "2026-08-21T12:59:13"
+  },
+  {
+    "id": "AUD011",
+    "user": "Admin User",
+    "action": "Vendors updated",
+    "entity": "vendors",
+    "entity_id": "VEN003",
+    "timestamp": "2026-08-21T12:59:13"
+  },
+  {
+    "id": "AUD012",
+    "user": "Admin User",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR001",
+    "timestamp": "2026-08-21T13:20:23"
+  },
+  {
+    "id": "AUD013",
+    "user": "Admin User",
+    "action": "PO sent to vendor",
+    "entity": "Purchase Order",
+    "entity_id": "PO001",
+    "timestamp": "2026-08-21T13:20:23"
+  },
+  {
+    "id": "AUD014",
+    "user": "Priya Procurement",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR002",
+    "timestamp": "2026-08-21T13:21:08"
+  },
+  {
+    "id": "AUD015",
+    "user": "Admin User",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR001",
+    "timestamp": "2026-08-21T13:27:41"
+  },
+  {
+    "id": "AUD016",
+    "user": "Priya Procurement",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR002",
+    "timestamp": "2026-08-21T13:29:23"
+  },
+  {
+    "id": "AUD017",
+    "user": "Arjun Manager",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR003",
+    "timestamp": "2026-08-21T13:30:30"
+  },
+  {
+    "id": "AUD018",
+    "user": "Vendor Portal",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR004",
+    "timestamp": "2026-08-21T13:31:40"
+  },
+  {
+    "id": "AUD019",
+    "user": "Warehouse Team",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR005",
+    "timestamp": "2026-08-21T13:33:17"
+  },
+  {
+    "id": "AUD020",
+    "user": "Finance Team",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR006",
+    "timestamp": "2026-08-21T13:33:54"
+  },
+  {
+    "id": "AUD021",
+    "user": "Priya Procurement",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR002",
+    "timestamp": "2026-08-21T13:38:10"
+  },
+  {
+    "id": "AUD022",
+    "user": "Priya Procurement",
+    "action": "AI analysis performed",
+    "entity": "Quote",
+    "entity_id": "QUO004",
+    "timestamp": "2026-08-21T13:38:10"
+  },
+  {
+    "id": "AUD023",
+    "user": "Priya Procurement",
+    "action": "User logged in",
+    "entity": "User",
+    "entity_id": "USR002",
+    "timestamp": "2026-08-21T13:38:18"
+  }
+]
